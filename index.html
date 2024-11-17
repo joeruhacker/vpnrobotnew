@@ -1,0 +1,92 @@
+<!-- webapp/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugan VPN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .header p {
+            font-size: 16px;
+            margin: 0;
+        }
+        .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.pinimg.com/736x/b7/5c/02/b75c02ea8e0cdf3a1b0ce795469c9163.jpg" alt="Logo" style="width:100px; margin-bottom: 20px;">
+            <h1>Tugan VPN</h1>
+            <p>Добро пожаловать, <strong><span id="username">user</span></strong></p>
+            <p>До конца действия подписки: <strong><span id="days_left">0 дней</span></strong></p>
+        </div>
+        <button class="button" onclick="connect()">🔒 Подключение</button>
+        <button class="button" onclick="subscribe()">📰 Оформить подписку</button>
+        <button class="button" onclick="support()">👨‍💻 Тех. поддержка</button>
+        <button class="button" onclick="referral()">🎁 Реферальная программа</button>
+    </div>
+
+    <script>
+        // Инициализация Telegram Web App
+        const tg = window.Telegram.WebApp;
+
+        // Получаем информацию о пользователе
+        const user = tg.initDataUnsafe.user;
+        document.getElementById('username').innerText = user ? user.first_name : 'Гость';
+
+        // Функции для каждой кнопки
+        function connect() {
+            tg.sendData(JSON.stringify({ action: 'connect' }));
+        }
+
+        function subscribe() {
+            tg.sendData(JSON.stringify({ action: 'subscribe' }));
+        }
+
+        function support() {
+            tg.sendData(JSON.stringify({ action: 'support' }));
+        }
+
+        function referral() {
+            tg.sendData(JSON.stringify({ action: 'referral' }));
+        }
+
+        // Расширение Web App на весь экран
+        tg.expand();
+    </script>
+</body>
+</html>
