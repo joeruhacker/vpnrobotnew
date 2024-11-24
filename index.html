@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Выбор тарифа VPN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Tariff Selector</title>
+    <!-- Подключение SDK Telegram Web Apps -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,9 +51,8 @@
 
     <script>
         function selectTariff(tariff) {
-            alert(`Вы выбрали тариф: ${tariff}. Перенаправляем в бот для оплаты...`);
-            // Здесь нужно указать ссылку на команду бота
-            window.location.href = `https://t.me/ваш_бот?start=payment_${tariff}`;
+            // Отправка выбранного тарифа обратно боту
+            Telegram.WebApp.sendData(tariff);
         }
     </script>
 </body>
