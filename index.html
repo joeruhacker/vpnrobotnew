@@ -3,109 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN UI</title>
+    <title>Мини-приложение Telegram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            background-color: #f5f5f5;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f7f9fc;
         }
-        .window {
-            width: 300px;
-            margin: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+        h1 {
+            margin-bottom: 20px;
         }
-        .header {
-            background: #007bff;
-            color: white;
-            padding: 10px;
+        button {
+            width: 80%;
+            margin: 10px;
+            padding: 15px 20px;
             font-size: 18px;
-            text-align: center;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content h3 {
-            margin: 0 0 15px;
-        }
-        .content p {
-            margin: 10px 0;
-            color: #555;
-        }
-        .button {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .button button {
-            background: #007bff;
-            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
+            text-align: center;
         }
-        .button button:hover {
-            background: #0056b3;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <!-- Window 1 -->
-    <div class="window">
-        <div class="header">Pixel VPN</div>
-        <div class="content">
-            <h3>Выберите подходящий план</h3>
-            <p>1 месяц: $2.99 <span style="color: gold;">⭐ 150</span></p>
-            <p>3 месяца: $2.49 <span style="color: gold;">⭐ 125</span></p>
-            <p>6 месяцев: $2.33 <span style="color: gold;">⭐ 115</span></p>
-            <p>Лимит 2 GB трафика в месяц — <strong>Бесплатно</strong></p>
-        </div>
-    </div>
+    <h1>Выберите действие</h1>
+    <button onclick="sendAction('choose_tariff')">Выбрать тариф</button>
+    <button onclick="sendAction('referral_program')">Реферальная программа</button>
+    <button onclick="sendAction('setup_instructions')">Установка и настройка</button>
 
-    <!-- Window 2 -->
-    <div class="window">
-        <div class="header">Pixel VPN</div>
-        <div class="content">
-            <h3>Подписка</h3>
-            <p>Статус: <strong>Активно</strong></p>
-            <p>10.00 GB из 10.00 GB ежемесячно</p>
-            <div class="button">
-                <button>Оформить подписку</button>
-            </div>
-        </div>
-    </div>
+    <script>
+        const tg = window.Telegram.WebApp;
 
-    <!-- Window 3 -->
-    <div class="window">
-        <div class="header">Pixel VPN</div>
-        <div class="content">
-            <h3>Быстрая настройка</h3>
-            <p>Процесс первичной настройки системы для использования всех возможностей VPN.</p>
-            <div class="button">
-                <button>Начать</button>
-            </div>
-        </div>
-    </div>
+        // Расширить мини-приложение на весь экран
+        tg.expand();
 
-    <!-- Window 4 -->
-    <div class="window">
-        <div class="header">Pixel VPN</div>
-        <div class="content">
-            <h3>Задания</h3>
-            <p>Оформить подписку: +10,000 🟡</p>
-            <p>Пригласить друга: +2,000 🟡</p>
-            <p>Подписаться на Новости VPN: +500 🟡</p>
-            <p>Подпишись на Instagram: +500 🟡</p>
-            <p>Crypto Pixel: +1,000 🟡</p>
-        </div>
-    </div>
+        // Функция отправки действия в бот
+        function sendAction(action) {
+            tg.sendData(action); // Отправка данных (например: 'choose_tariff') в бот
+        }
+    </script>
 </body>
 </html>
