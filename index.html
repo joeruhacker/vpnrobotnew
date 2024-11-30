@@ -1,56 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>VPN Mini-App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мини-приложение Telegram</title>
+    <!-- Telegram Web App JavaScript SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f7f9fc;
+            padding: 20px;
         }
-        h1 {
-            margin-bottom: 20px;
-        }
-        button {
-            width: 80%;
-            margin: 10px;
-            padding: 15px 20px;
-            font-size: 18px;
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007aff;
             border: none;
             border-radius: 8px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
             text-align: center;
+            text-decoration: none;
+            cursor: pointer;
         }
-        button:hover {
-            background-color: #45a049;
+
+        .button:active {
+            background-color: #0051a8;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Выберите действие</h1>
-    <button onclick="sendAction('choose_tariff')">Выбрать тариф</button>
-    <button onclick="sendAction('referral_program')">Реферальная программа</button>
-    <button onclick="sendAction('setup_instructions')">Установка и настройка</button>
+
+    <button id="connect_vpn" class="button hidden">🔗 Подключить VPN</button>
+    <button id="profile" class="button">👤 Личный кабинет</button>
+    <button id="support" class="button">📞 Техническая поддержка</button>
+    <button id="channel" class="button">📢 Официальный канал</button>
+    <button id="admin" class="button hidden">🔧 Администратор</button>
+    <button id="about_vpn" class="button">🌐 О нашем VPN</button>
 
     <script>
-        const tg = window.Telegram.WebApp;
-
-        // Расширить мини-приложение на весь экран
+        // Инициализация Telegram WebApp
+        let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Функция отправки действия в бот
-        function sendAction(action) {
-            tg.sendData(action); // Отправка данных (например: 'choose_tariff') в бот
+        // Получаем параметры из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const user_id = urlParams.get('user_id');
+
+        // Получаем trial_status и admin из параметров URL
+        const trial_status = urlParams.get('trial_status') || '0';
+        const admin = urlParams.get('admin') || 'false';
+
+        // Показываем или скрываем кнопки на основе trial_status и admin
+        if (trial_status === '0') {
+            document.getElementById('connect_vpn').classList.remove('hidden');
+        }
+
+        if (admin === 'true') {
+            document.getElementById('admin').classList.remove('hidden');
+        }
+
+        // Обработчики кликов по кнопкам
+        document.getElementById('connect_vpn').addEventListener('click', function() {
+            sendDataToBot('connect_vpn');
+        });
+
+        document.getElementById('profile').addEventListener('click', function() {
+            sendDataToBot('profile');
+        });
+
+        document.getElementById('support').addEventListener('click', function() {
+            // Замените на ваш URL поддержки
+            window.open('https://t.me/JoeHacker_bot', '_blank');
+        });
+
+        document.getElementById('channel').addEventListener('click', function() {
+            // Замените на ваш URL канала
+            window.open('https://t.me/joe_hacker_canal', '_blank');
+        });
+
+        document.getElementById('admin').addEventListener('click', function() {
+            sendDataToBot('admin');
+        });
+
+        document.getElementById('about_vpn').addEventListener('click', function() {
+            sendDataToBot('about_vpn');
+        });
+
+        function sendDataToBot(callbackData) {
+            // Отправляем данные боту через Telegram WebApp API
+            tg.sendData(callbackData);
         }
     </script>
 </body>
