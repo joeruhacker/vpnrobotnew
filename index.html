@@ -55,8 +55,6 @@
         // Получаем параметры из URL
         const urlParams = new URLSearchParams(window.location.search);
         const user_id = urlParams.get('user_id');
-
-        // Получаем trial_status и admin из параметров URL
         const trial_status = urlParams.get('trial_status') || '0';
         const admin = urlParams.get('admin') || 'false';
 
@@ -80,12 +78,12 @@
 
         document.getElementById('support').addEventListener('click', function() {
             // Замените на ваш URL поддержки
-            window.open('https://t.me/JoeHacker_bot', '_blank');
+            tg.openLink('https://t.me/your_support_chat');
         });
 
         document.getElementById('channel').addEventListener('click', function() {
             // Замените на ваш URL канала
-            window.open('https://t.me/joe_hacker_canal', '_blank');
+            tg.openLink('https://t.me/your_channel');
         });
 
         document.getElementById('admin').addEventListener('click', function() {
@@ -99,6 +97,9 @@
         function sendDataToBot(callbackData) {
             // Отправляем данные боту через Telegram WebApp API
             tg.sendData(callbackData);
+
+            // Закрываем приложение после отправки данных
+            tg.close();
         }
     </script>
 </body>
