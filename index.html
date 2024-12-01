@@ -2,106 +2,138 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>VPN Mini-App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Telegram Web App JavaScript SDK -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Инструкции по Использованию Ключа</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            /* Установка фонового изображения */
-            background-image: url('https://i.pinimg.com/736x/3d/93/98/3d939812d8943b125364740d3c6c5377.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+        /* Общие стили */
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            background: url('https://i.pinimg.com/736x/3d/93/98/3d939812d8943b125364740d3c6c5377.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            /* Белый полупрозрачный фон для контейнера */
-            background-color: rgba(255, 255, 255, 0.3); /* Полупрозрачный белый */
         }
 
+        /* Оверлей для улучшения читаемости */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+
+        /* Контейнер контента */
         .container {
-            background-color: rgba(255, 255, 255, 0.85); /* Полупрозрачный белый фон */
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
         }
 
+        /* Заголовок */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #007aff;
+        }
+
+        /* Список инструкций */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        li::before {
+            content: attr(data-icon);
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        /* Кнопка */
         .button {
             display: block;
             width: 100%;
-            padding: 20px;
-            margin: 15px 0;
-            font-size: 18px;
-            color: #fff;
-            background-color: #28a745; /* Зеленый цвет */
-            border: none;
-            border-radius: 12px;
+            padding: 15px;
+            background: #007aff;
+            color: white;
             text-align: center;
             text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 1.2em;
+            transition: background 0.3s ease;
         }
 
         .button:hover {
-            background-color: #218838; /* Темно-зеленый при наведении */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background: #005bb5;
         }
 
-        .button:active {
-            background-color: #1e7e34; /* Еще темнее при нажатии */
-            transform: translateY(0);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hidden {
-            display: none;
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            li {
+                font-size: 1em;
+            }
+
+            .button {
+                font-size: 1em;
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-
+    <div class="overlay"></div>
     <div class="container">
-        <button id="support" class="button">📞 Техническая поддержка</button>
-        <button id="channel" class="button">📢 Официальный канал</button>
+        <h1>📋 Инструкции по использованию вашего ключа:</h1>
+        <ul>
+            <li data-icon="📱">
+                <span>Скачайте приложение для вашего устройства:
+                    <ul>
+                        <li>🤖 Для Android: <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android&hl=ru&pli=1" target="_blank">V2RayTun</a></li>
+                        <li>🍎 Для iPhone: <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" target="_blank">V2RayTun</a></li>
+                        <li>💻 Для Windows: <a href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.Msix" target="_blank">Hiddify Next</a></li>
+                    </ul>
+                </span>
+            </li>
+            <li data-icon="🔑">Скопируйте предоставленный ключ, который вы получили ранее.</li>
+            <li data-icon="📲">Откройте приложение и нажмите на плюсик сверху справа.</li>
+            <li data-icon="📋">Выберите 'Вставить из буфера обмена' для добавления ключа.</li>
+        </ul>
+        <p>💬 Если у вас возникнут вопросы, не стесняйтесь обращаться в поддержку.</p>
+        <a href="https://t.me/JoeHacker_bot" target="_blank" class="button">Связаться с поддержкой</a>
     </div>
-
-    <script>
-        // Инициализация Telegram WebApp
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-
-        // Получаем параметры из URL (если необходимо)
-        const urlParams = new URLSearchParams(window.location.search);
-        const user_id = urlParams.get('user_id');
-
-        // Получаем trial_status и admin из параметров URL (если необходимо)
-        const trial_status = urlParams.get('trial_status') || '0';
-        const admin = urlParams.get('admin') || 'false';
-
-        // Обработчики кликов по кнопкам
-        document.getElementById('support').addEventListener('click', function() {
-            // Открываем ссылку внутри Telegram
-            tg.openLink('https://t.me/JoeHacker_bot');
-            // Закрываем приложение после открытия ссылки
-            tg.close();
-        });
-
-        document.getElementById('channel').addEventListener('click', function() {
-            // Открываем ссылку внутри Telegram
-            tg.openLink('https://t.me/joe_hacker_canal');
-            // Закрываем приложение после открытия ссылки
-            tg.close();
-        });
-    </script>
 </body>
 </html>
