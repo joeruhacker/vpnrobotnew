@@ -80,12 +80,12 @@
 
         document.getElementById('support').addEventListener('click', function() {
             // Замените на ваш URL поддержки
-            window.open('https://t.me/JoeHacker_bot', '_blank');
+            tg.openLink('https://t.me/JoeHacker_bot');
         });
 
         document.getElementById('channel').addEventListener('click', function() {
             // Замените на ваш URL канала
-            window.open('https://t.me/joe_hacker_canal', '_blank');
+            tg.openLink('https://t.me/joe_hacker_canal');
         });
 
         document.getElementById('admin').addEventListener('click', function() {
@@ -99,6 +99,9 @@
         function sendDataToBot(callbackData) {
             // Отправляем данные боту через Telegram WebApp API
             tg.sendData(callbackData);
+
+            // Закрываем приложение после отправки данных
+            tg.close();
         }
     </script>
 </body>
