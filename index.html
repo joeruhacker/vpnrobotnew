@@ -19,7 +19,6 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -42,7 +41,7 @@
             margin: 15px 0;
             font-size: 18px;
             color: #fff;
-            background-color: #007aff;
+            background-color: #28a745; /* Зеленый цвет */
             border: none;
             border-radius: 12px;
             text-align: center;
@@ -53,13 +52,13 @@
         }
 
         .button:hover {
-            background-color: #0051a8;
+            background-color: #218838; /* Темно-зеленый при наведении */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
         .button:active {
-            background-color: #003f7f;
+            background-color: #1e7e34; /* Еще темнее при нажатии */
             transform: translateY(0);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -89,7 +88,6 @@
         const trial_status = urlParams.get('trial_status') || '0';
         const admin = urlParams.get('admin') || 'false';
 
-       
         // Обработчики кликов по кнопкам
         document.getElementById('support').addEventListener('click', function() {
             // Открываем ссылку внутри Telegram
