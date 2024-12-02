@@ -42,9 +42,12 @@
             width: 90%;
             background: rgba(255, 255, 255, 0.95);
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Заголовок */
@@ -60,10 +63,11 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            width: 100%;
         }
 
         li {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 1.1em;
             display: flex;
             align-items: flex-start;
@@ -80,28 +84,44 @@
         li ul {
             margin-top: 10px;
             margin-left: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         li ul li {
-            margin-bottom: 10px;
+            margin-bottom: 0;
             font-size: 1em;
         }
 
-        li ul li a {
-            color: #007aff;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        /* Кнопки вместо ссылок */
+        .download-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background: #007aff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            max-width: 250px;
         }
 
-        li ul li a:hover {
-            color: #005bb5;
-            text-decoration: underline;
+        .download-button:hover {
+            background: #005bb5;
+            transform: translateY(-2px);
         }
 
         /* Параграф */
         p {
             margin-top: 20px;
             font-size: 1.1em;
+            text-align: center;
         }
 
         /* Кнопка */
@@ -115,12 +135,13 @@
             text-decoration: none;
             border-radius: 10px;
             font-size: 1.2em;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
             margin-top: 20px;
         }
 
         .button:hover {
             background: #005bb5;
+            transform: translateY(-2px);
         }
 
         /* Анимация появления */
@@ -147,6 +168,11 @@
                 font-size: 1.1em;
                 padding: 12px;
             }
+
+            .download-button {
+                font-size: 0.95em;
+                padding: 8px 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -166,6 +192,11 @@
                 font-size: 1em;
                 padding: 10px;
             }
+
+            .download-button {
+                font-size: 0.9em;
+                padding: 7px 14px;
+            }
         }
     </style>
 </head>
@@ -175,13 +206,24 @@
         <h1>📋 Инструкции по использованию вашего ключа:</h1>
         <ul>
             <li data-icon="📱">
-                <span>Скачайте приложение для вашего устройства:
-                    <ul>
-                        <li>🤖 Для Android: <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android&hl=ru&pli=1" target="_blank">V2RayTun</a></li>
-                        <li>🍎 Для iPhone: <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" target="_blank">V2RayTun</a></li>
-                        <li>💻 Для Windows: <a href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.Msix" target="_blank">Hiddify Next</a></li>
-                    </ul>
-                </span>
+                <span>Скачайте приложение для вашего устройства:</span>
+                <ul>
+                    <li>
+                        <button class="download-button" onclick="window.open('https://play.google.com/store/apps/details?id=com.v2raytun.android&hl=ru&pli=1', '_blank')">
+                            🤖 Для Android: V2RayTun
+                        </button>
+                    </li>
+                    <li>
+                        <button class="download-button" onclick="window.open('https://apps.apple.com/ru/app/v2raytun/id6476628951', '_blank')">
+                            🍎 Для iPhone: V2RayTun
+                        </button>
+                    </li>
+                    <li>
+                        <button class="download-button" onclick="window.open('https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.Msix', '_blank')">
+                            💻 Для Windows: Hiddify Next
+                        </button>
+                    </li>
+                </ul>
             </li>
             <li data-icon="🔑">Скопируйте предоставленный ключ, который вы получили ранее.</li>
             <li data-icon="📲">Откройте приложение и нажмите на плюсик сверху справа.</li>
